@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: doorstep-trust-network-api
+    runtime: python
+    plan: free
+    region: singapore
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: ALLOWED_ORIGINS
+        value: http://localhost:5173
+      - key: PYTHON_VERSION
+        value: 3.11.9
